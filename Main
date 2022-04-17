@@ -31,9 +31,7 @@ local TextDF = Instance.new(className, parent)
 
 --setting TextLabel
 TextDF.Name = "TextDF"
-TextDF.Position = UDim2.new(0, 120, 0, 60)
 TextDF.TextSize = 30
-TextDF.TextColor3 = Color3.new(255,255,255)
 TextDF.TextStrokeTransparency = 0
 
 --create TextLabel
@@ -43,7 +41,6 @@ local TextMN = Instance.new(className, parent)
 
 --setting TextLabel
 TextMN.Name = "TextMN"
-TextMN.Position = UDim2.new(0, 120, 0, 100)
 TextMN.TextSize = 30
 TextMN.TextColor3 = Color3.new(255,255,255)
 TextMN.TextStrokeTransparency = 0
@@ -55,7 +52,6 @@ local TextFN = Instance.new(className, parent)
 
 --setting TextLabel
 TextFN.Name = "TextFN"
-TextFN.Position = UDim2.new(0, 120, 0, 140)
 TextFN.TextSize = 30
 TextFN.TextColor3 = Color3.new(255,255,255)
 TextFN.TextStrokeTransparency = 0
@@ -79,9 +75,13 @@ function dfcheck()
     end
     if MAS >= DFMAS then
         DFFN = true
+        TextDF.Position = UDim2.new(0, 85, 0, 60)
+        TextDF.TextColor3 = Color3.fromHex("#64ff64")
         TextDF.Text = "มาสผลครบ"
     else
         DFFN = false
+        TextDF.Position = UDim2.new(0, 120, 0, 60)
+        TextDF.TextColor3 = Color3.fromHex("#ff3232")
         TextDF.Text = "มาสผลยังไม่ครบ"
     end
 end
@@ -90,17 +90,25 @@ function moneycheck()
     MONEY = game:GetService("Players").LocalPlayer.Data.Beli.Value
     if MONEY >= 10000000 then
         MNFN = true
+        TextMN.Position = UDim2.new(0, 90, 0, 95)
+        TextMN.TextColor3 = Color3.fromHex("#64ff64")
         TextMN.Text = "เงินครบแล้ว"
     elseif MONEY <= 10000000 then
         MNFN = false
+        TextMN.Position = UDim2.new(0, 97, 0, 95)
+        TextMN.TextColor3 = Color3.fromHex("#ff3232")
         TextMN.Text = "เงินยังไม่ครบ"
     end
 end
 
 function FNcheck()
     if DFFN and MNFN then
+        TextFN.Position = UDim2.new(0, 105, 0, 130)
+        TextFN.TextColor3 = Color3.fromHex("#64ff64")
         TextFN.Text = "เสร็จแล้วปิดได้"
     else
+        TextFN.Position = UDim2.new(0, 100, 0, 130)
+        TextFN.TextColor3 = Color3.fromHex("#ff3232")
         TextFN.Text = "ยังไม่เสร็จเลย"
     end
 end
@@ -111,13 +119,16 @@ function Refresh()
     TextFN.Text = "Refresh.."
 end
 
+dfcheck()
+moneycheck()
+FNcheck()
+
 spawn(function()
-    while true do
+    while wait(10) do
         Refresh()
         wait(1)
         dfcheck()
         moneycheck()
         FNcheck()
-        wait(10)
     end
 end)
