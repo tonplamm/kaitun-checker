@@ -1,0 +1,127 @@
+--find old ui
+if game.CoreGui:FindFirstChild("hehe") then 
+    game.CoreGui:FindFirstChild("hehe"):Destroy() 
+end
+
+--create ScreenGui
+local className = "ScreenGui"
+local parent = game.CoreGui
+local part = Instance.new(className, parent)
+part.Name = "hehe"
+
+wait(.5)
+
+--create TextLabel
+local className = "TextLabel"
+local parent = game.CoreGui.hehe
+local Text = Instance.new(className, parent)
+
+--setting TextLabel
+Text.Name = "textname"
+Text.Text = game:GetService("Players").LocalPlayer.Name
+Text.Position = UDim2.new(0, 400, 0, 20)
+Text.TextSize = 50
+Text.TextColor3 = Color3.new(255,255,255)
+Text.TextStrokeTransparency = 0
+
+function Textname()
+    Text.Text = game:GetService("Players").LocalPlayer.Name
+end
+
+--create TextLabel
+local className = "TextLabel"
+local parent = game.CoreGui.hehe
+local TextDF = Instance.new(className, parent)
+
+--setting TextLabel
+TextDF.Name = "TextDF"
+TextDF.Position = UDim2.new(0, 400, 0, 80)
+TextDF.TextSize = 50
+TextDF.TextColor3 = Color3.new(255,255,255)
+TextDF.TextStrokeTransparency = 0
+
+--create TextLabel
+local className = "TextLabel"
+local parent = game.CoreGui.hehe
+local TextMN = Instance.new(className, parent)
+
+--setting TextLabel
+TextMN.Name = "TextMN"
+TextMN.Position = UDim2.new(0, 400, 0, 140)
+TextMN.TextSize = 50
+TextMN.TextColor3 = Color3.new(255,255,255)
+TextMN.TextStrokeTransparency = 0
+
+--create TextLabel
+local className = "TextLabel"
+local parent = game.CoreGui.hehe
+local TextFN = Instance.new(className, parent)
+
+--setting TextLabel
+TextFN.Name = "TextFN"
+TextFN.Position = UDim2.new(0, 400, 0, 200)
+TextFN.TextSize = 50
+TextFN.TextColor3 = Color3.new(255,255,255)
+TextFN.TextStrokeTransparency = 0
+
+function dfcheck()
+    DFNAME = game:GetService("Players").LocalPlayer.Data.DevilFruit.Value
+    MAS = game:GetService("Players").tonplam154546.Backpack["Human-Human: Buddha"].Level.Value
+    print(DFNAME)
+    if DFNAME == "Soul-Soul" then
+        DFMAS = 350
+    elseif DFNAME == "Dragon-Dragon" then
+        DFMAS = 350
+    elseif DFNAME == "Venom-Venom" then
+        DFMAS = 300
+    elseif DFNAME == "Human-Human: Buddha" then
+        DFMAS = 200
+    elseif DFNAME == "Quake-Quake" then
+        DFMAS = 150
+    elseif DFNAME == "Dark-Dark" then
+        DFMAS = 110
+    end
+    if MAS >= DFMAS then
+        DFFN = true
+        TextDF.Text = "มาสผลครบแล้ว"
+    else
+        DFFN = false
+        TextDF.Text = "มาสผลยังไม่ครบ"
+    end
+end
+
+function moneycheck()
+    MONEY = game:GetService("Players").tonplam154546.Data.Beli.Value
+    if MONEY >= 10000000 then
+        MNFN = true
+        TextMN.Text = "เงินครบแล้ว"
+    elseif MONEY <= 10000000 then
+        MNFN = false
+        TextMN.Text = "เงินยังไม่ครบ"
+    end
+end
+
+function FNcheck()
+    if DFFN and MNFN then
+        TextFN.Text = "เสร็จแล้วปิดได้"
+    else
+        TextFN.Text = "ยังไม่เสร็จเลย"
+    end
+end
+
+function Refresh()
+    TextDF.Text = "Refresh.."
+    TextMN.Text = "Refresh.."
+    TextFN.Text = "Refresh.."
+end
+
+spawn(function()
+    while true do
+        Refresh()
+        wait(1)
+        dfcheck()
+        moneycheck()
+        FNcheck()
+        wait(10)
+    end
+end)
