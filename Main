@@ -62,7 +62,7 @@ TextFN.TextStrokeTransparency = 0
 
 function dfcheck()
     DFNAME = game:GetService("Players").LocalPlayer.Data.DevilFruit.Value
-    MAS = game:GetService("Players").tonplam154546.Backpack["Human-Human: Buddha"].Level.Value
+    MAS = game:GetService("Players").LocalPlayer.Backpack["Human-Human: Buddha"].Level.Value
     print(DFNAME)
     if DFNAME == "Soul-Soul" then
         DFMAS = 350
