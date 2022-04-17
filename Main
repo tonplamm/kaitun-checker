@@ -19,14 +19,10 @@ local Text = Instance.new(className, parent)
 --setting TextLabel
 Text.Name = "textname"
 Text.Text = game:GetService("Players").LocalPlayer.Name
-Text.Position = UDim2.new(0, 400, 0, 20)
-Text.TextSize = 50
+Text.Position = UDim2.new(0, 175, 0, 20)
+Text.TextSize = 30
 Text.TextColor3 = Color3.new(255,255,255)
 Text.TextStrokeTransparency = 0
-
-function Textname()
-    Text.Text = game:GetService("Players").LocalPlayer.Name
-end
 
 --create TextLabel
 local className = "TextLabel"
@@ -35,8 +31,8 @@ local TextDF = Instance.new(className, parent)
 
 --setting TextLabel
 TextDF.Name = "TextDF"
-TextDF.Position = UDim2.new(0, 400, 0, 80)
-TextDF.TextSize = 50
+TextDF.Position = UDim2.new(0, 120, 0, 60)
+TextDF.TextSize = 30
 TextDF.TextColor3 = Color3.new(255,255,255)
 TextDF.TextStrokeTransparency = 0
 
@@ -47,8 +43,8 @@ local TextMN = Instance.new(className, parent)
 
 --setting TextLabel
 TextMN.Name = "TextMN"
-TextMN.Position = UDim2.new(0, 400, 0, 140)
-TextMN.TextSize = 50
+TextMN.Position = UDim2.new(0, 120, 0, 100)
+TextMN.TextSize = 30
 TextMN.TextColor3 = Color3.new(255,255,255)
 TextMN.TextStrokeTransparency = 0
 
@@ -59,8 +55,8 @@ local TextFN = Instance.new(className, parent)
 
 --setting TextLabel
 TextFN.Name = "TextFN"
-TextFN.Position = UDim2.new(0, 400, 0, 200)
-TextFN.TextSize = 50
+TextFN.Position = UDim2.new(0, 120, 0, 140)
+TextFN.TextSize = 30
 TextFN.TextColor3 = Color3.new(255,255,255)
 TextFN.TextStrokeTransparency = 0
 
@@ -83,7 +79,7 @@ function dfcheck()
     end
     if MAS >= DFMAS then
         DFFN = true
-        TextDF.Text = "มาสผลครบแล้ว"
+        TextDF.Text = "มาสผลครบ"
     else
         DFFN = false
         TextDF.Text = "มาสผลยังไม่ครบ"
@@ -91,7 +87,7 @@ function dfcheck()
 end
 
 function moneycheck()
-    MONEY = game:GetService("Players").tonplam154546.Data.Beli.Value
+    MONEY = game:GetService("Players").LocalPlayer.Data.Beli.Value
     if MONEY >= 10000000 then
         MNFN = true
         TextMN.Text = "เงินครบแล้ว"
