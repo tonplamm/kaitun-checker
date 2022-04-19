@@ -1,0 +1,252 @@
+_G.Size = 150
+
+if game.CoreGui:FindFirstChild("ScreenOK") then 
+    game.CoreGui:FindFirstChild("ScreenOK"):Destroy() 
+end
+
+wait(1)
+
+supim = "4831781711"
+ecim =  "6866994470"
+dtim = "7831677967"
+smim = "6525157144"
+detim = "6085350468"
+
+function SUP()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySuperhuman")
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySuperhuman",true)
+end
+
+function EC()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyElectricClaw")
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyElectricClaw",true) 
+end
+
+function DT()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDragonTalon")
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDragonTalon",true) 
+end
+
+function SM()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate")
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate",true)
+end
+
+function DET()
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDeathStep")
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDeathStep",true)
+end
+
+function checkSUP()
+    WPNAME = "Superhuman"
+    findSUP = game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(WPNAME)
+    if findSUP then
+        Imnum1 = supim
+        supfind = true
+        print("Have Sup")
+    elseif not findSUP then
+        SUP()
+        supfind = false
+        print("No Sup")
+    end
+end
+
+function checkEC()
+    WPNAME = "Electric Claw"
+    findSUP = game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(WPNAME)
+    if findSUP then
+        if supfind == false then
+            Imnum1 = ecim
+        elseif supfind then
+            Imnum2 = ecim
+        end
+        ecfind = true
+        print("Have EC")
+    elseif not findSUP then
+        EC()
+        ecfind = false
+        print("No EC")
+    end
+end
+
+function checkDT()
+    WPNAME = "Dragon Talon"
+    findSUP = game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(WPNAME)
+    if findSUP then
+        if supfind == false and ecfind == false then
+            Imnum1 = dtim
+        elseif supfind == true and ecfind == false then
+            Imnum2 = dtim
+        elseif supfind == true and ecfind == true then
+            Imnum3 = dtim
+        elseif supfind == false and ecfind == true then
+            Imnum2 = dtim
+        end
+        dtfind = true
+        print("Have DT")
+    elseif not findSUP then
+        DT()
+        dtfind = false
+        print("No DT")
+    end
+end
+
+function checkSM()
+    WPNAME = "Sharkman Karate"
+    findSUP = game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(WPNAME)
+    if findSUP then
+        if supfind == false and ecfind == false and dtfind == false then
+            Imnum1 = smim
+        elseif supfind == true and ecfind == false and dtfind == false then
+            Imnum2 = smim
+        elseif supfind == true and ecfind == true and dtfind == false then
+            Imnum3 = smim
+        elseif supfind == true and ecfind == true and dtfind == true then
+            Imnum4 = smim
+        elseif supfind == false and ecfind == true and dtfind == false then
+            Imnum2 = smim
+        elseif supfind == false and ecfind == false and dtfind == true then
+            Imnum2 = smim
+        elseif supfind == false and ecfind == true and dtfind == true then
+            Imnum3 = smim
+        end
+        smfind = true
+        print("Have SM")
+    elseif not findSUP then
+        SM()
+        smfind = false
+        print("No SM")
+    end
+end
+
+function checkDET()
+    WPNAME = "Death Step"
+    findSUP = game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(WPNAME)
+    if findSUP then
+        if supfind == false and ecfind == false and dtfind == false and smfind == false then
+            Imnum1 = detim
+        elseif supfind == true and ecfind == false and dtfind == false and smfind == false then
+            Imnum2 = detim
+        elseif supfind == true and ecfind == true and dtfind == false and smfind == false then
+            Imnum3 = detim
+        elseif supfind == true and ecfind == true and dtfind == true and smfind == false then
+            Imnum4 = detim
+        elseif supfind == true and ecfind == true and dtfind == true and smfind == true then
+            Imnum5 = detim
+        elseif supfind == false and ecfind == true and dtfind == true and smfind == true then
+            Imnum4 = detim
+        elseif supfind == false and ecfind == false and dtfind == true and smfind == true then
+            Imnum3 = detim
+        elseif supfind == false and ecfind == false and dtfind == false and smfind == true then
+            Imnum2 = detim
+        elseif supfind == false and ecfind == true and dtfind == false and smfind == true then
+            Imnum2 = detim
+        elseif supfind == false and ecfind == false and dtfind == true and smfind == true then
+            Imnum2 = detim
+        elseif supfind == false and ecfind == false and dtfind == false and smfind == true then
+            Imnum2 = detim
+        elseif supfind == true and ecfind == false and dtfind == true and smfind == false then
+            Imnum2 = detim
+        elseif supfind == true and ecfind == false and dtfind == true and smfind == true then
+            Imnum4 = detim
+        elseif supfind == true and ecfind == true and dtfind == false and smfind == true then
+            Imnum4 = detim
+        elseif supfind == true and ecfind == false and dtfind == false and smfind == true then
+            Imnum3 = detim
+        elseif supfind == false and ecfind == true and dtfind == true and smfind == false then
+            Imnum3 = detim
+        end        
+        print("Have DET")
+    elseif not findSUP then
+        DET()
+        print("No DET")
+    end
+end
+
+checkSUP()
+wait(.5)
+checkSUP()
+wait(1)
+checkEC()
+wait(.5)
+checkEC()
+wait(1)
+checkDT()
+wait(.5)
+checkDT()
+wait(1)
+checkSM()
+wait(.5)
+checkSM()
+wait(1)
+checkDET()
+wait(.5)
+checkDET()
+wait(1)
+
+local className = "ScreenGui"
+local parent = game.CoreGui
+local ScreenOK = Instance.new(className, parent)
+ScreenOK.Name = "ScreenOK"
+
+local className = "ImageLabel"
+local parent = game.CoreGui.ScreenOK
+local ImageMUD1 = Instance.new(className, parent)
+ImageMUD1.Name = "ImageMUD1"
+
+ImageMUD1.Size = UDim2.new(0, _G.Size, 0, _G.Size)
+--TextMN.Position = UDim2.new(0, 0, 0, 0)
+ImageMUD1.Image = "rbxassetid://"..Imnum1
+ImageMUD1.BackgroundTransparency = 1
+
+local className = "ImageLabel"
+local parent = game.CoreGui.ScreenOK
+local ImageMUD2 = Instance.new(className, parent)
+ImageMUD2.Name = "ImageMUD2"
+
+ImageMUD2.Size = UDim2.new(0, _G.Size, 0, _G.Size)
+ImageMUD2.Position = UDim2.new(0, _G.Size, 0, 0)
+ImageMUD2.Image = "rbxassetid://"..Imnum2
+ImageMUD2.BackgroundTransparency = 1
+
+local className = "ImageLabel"
+local parent = game.CoreGui.ScreenOK
+local ImageMUD3 = Instance.new(className, parent)
+ImageMUD3.Name = "ImageMUD3"
+
+ImageMUD3.Size = UDim2.new(0, _G.Size, 0, _G.Size)
+ImageMUD3.Position = UDim2.new(0, _G.Size * 2, 0, 0)
+if Imnum3 == nil then
+    print("3 : nil")
+else
+    ImageMUD3.Image = "rbxassetid://"..Imnum3
+end
+ImageMUD3.BackgroundTransparency = 1
+
+local className = "ImageLabel"
+local parent = game.CoreGui.ScreenOK
+local ImageMUD4 = Instance.new(className, parent)
+ImageMUD4.Name = "ImageMUD4"
+
+ImageMUD4.Size = UDim2.new(0, _G.Size, 0, _G.Size)
+ImageMUD4.Position = UDim2.new(0, _G.Size * 3, 0, 0)
+if Imnum4 == nil then
+    print("4 : nil")
+else
+    ImageMUD4.Image = "rbxassetid://"..Imnum4
+end
+ImageMUD4.BackgroundTransparency = 1
+
+local className = "ImageLabel"
+local parent = game.CoreGui.ScreenOK
+local ImageMUD5 = Instance.new(className, parent)
+ImageMUD5.Name = "ImageMUD5"
+
+ImageMUD5.Size = UDim2.new(0, _G.Size, 0, _G.Size)
+ImageMUD5.Position = UDim2.new(0, _G.Size * 4, 0, 0)
+if Imnum5 == nil then
+    print("5 : nil")
+else
+    ImageMUD5.Image = "rbxassetid://"..Imnum5
+end
+ImageMUD5.BackgroundTransparency = 1
