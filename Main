@@ -221,13 +221,15 @@ end
 
 spawn(function()
     while wait() do
-        dfcheck()
-        moneycheck()
-        checkyama()
-        checkbuddy()
-        FNcheck()
-        wait(10)
-        Refresh()
-        wait(1)
+        pcall(function()
+            dfcheck()
+            moneycheck()
+            checkyama()
+            checkbuddy()
+            FNcheck()
+            wait(10)
+            Refresh()
+            wait(1)
+        end)
     end
 end)
