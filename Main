@@ -78,6 +78,17 @@ TextBD.TextSize = 30
 TextBD.TextColor3 = Color3.new(255,255,255)
 TextBD.TextStrokeTransparency = 0
 
+--create TextLabel
+local className = "TextLabel"
+local parent = game.CoreGui.hehe
+local TextHS = Instance.new(className, parent)
+
+--setting TextLabel
+TextHS.Name = "TextHS"
+TextHS.TextSize = 30
+TextHS.TextColor3 = Color3.new(255,255,255)
+TextHS.TextStrokeTransparency = 0
+
 function dfcheck()
     DFNAME = game:GetService("Players").LocalPlayer.Data.DevilFruit.Value
     --MAS = game:GetService("Players").LocalPlayer.Backpack[DFNAME].Level.Value
@@ -94,6 +105,8 @@ function dfcheck()
     elseif DFNAME == "Quake-Quake" then
         DFMAS = 150
     elseif DFNAME == "Dark-Dark" then
+        DFMAS = 110
+    elseif DFNAME == "Ice-Ice" then
         DFMAS = 110
     end
     MAS = game:GetService("Players").LocalPlayer.Backpack[DFNAME].Level.Value
@@ -132,12 +145,12 @@ function moneycheck()
 end
 
 function FNcheck()
-    if DFFN and MNFN and YMFN and BDFN then
-        TextFN.Position = UDim2.new(0, 105, 0, 200)
+    if DFFN and MNFN and YMFN and HSFN then
+        TextFN.Position = UDim2.new(0, 105, 0, 235)
         TextFN.TextColor3 = Color3.fromHex("#64ff64")
         TextFN.Text = "เสร็จแล้วปิดได้"
     else
-        TextFN.Position = UDim2.new(0, 100, 0, 200)
+        TextFN.Position = UDim2.new(0, 100, 0, 235)
         TextFN.TextColor3 = Color3.fromHex("#ff3232")
         TextFN.Text = "ยังไม่เสร็จเลย"
     end
@@ -219,13 +232,43 @@ function checkbuddy()
     game:GetService("Players").LocalPlayer.PlayerGui.Main.Inventory.Visible = false
 end
 
+function checkhallow()
+    game:GetService("Players").LocalPlayer.PlayerGui.Main.Inventory.Visible = true
+    wait(1)
+    nowHS = game:GetService("Players").LocalPlayer.PlayerGui.Main.Inventory.Container.Current.ScrollingFrame.Frame
+    invenHS = game:GetService("Players").LocalPlayer.PlayerGui.Main.Inventory.Container.Stored.ScrollingFrame.Frame
+    nowHSS = nowHS:FindFirstChild("Hallow Scythe")
+    invenHSS = invenHS:FindFirstChild("Hallow Scythe")
+    if nowHSS then
+        print("Have Hallow in hand")
+        HSFN = true
+        TextHS.Position = UDim2.new(0, 55, 0, 200)
+        TextHS.TextColor3 = Color3.fromHex("#64ff64")
+        TextHS.Text = "มีเคียว"
+    elseif invenHSS then
+        print("Have Hallow in inven")
+        HSFN = true
+        TextHS.Position = UDim2.new(0, 55, 0, 200)
+        TextHS.TextColor3 = Color3.fromHex("#64ff64")
+        TextHS.Text = "มีเคียว"
+    else
+        print("No Hallow Bitch")
+        HSFN = false
+        TextHS.Position = UDim2.new(0, 75, 0, 200)
+        TextHS.TextColor3 = Color3.fromHex("#ff3232")
+        TextHS.Text = "ไม่มีเคียว"
+    end
+    game:GetService("Players").LocalPlayer.PlayerGui.Main.Inventory.Visible = false
+end
+
 spawn(function()
-    while wait() do
+   while wait() do
         pcall(function()
             dfcheck()
             moneycheck()
             checkyama()
             checkbuddy()
+            checkhallow()
             FNcheck()
             wait(10)
             Refresh()
