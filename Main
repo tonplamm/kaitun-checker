@@ -80,32 +80,39 @@ TextBD.TextStrokeTransparency = 0
 
 function dfcheck()
     DFNAME = game:GetService("Players").LocalPlayer.Data.DevilFruit.Value
-    MAS = game:GetService("Players").LocalPlayer.Backpack[DFNAME].Level.Value
-    print(DFNAME)
-    if DFNAME == "Soul-Soul" then
-        DFMAS = 350
-    elseif DFNAME == "Dragon-Dragon" then
-        DFMAS = 350
-    elseif DFNAME == "Venom-Venom" then
-        DFMAS = 300
-    elseif DFNAME == "Human-Human: Buddha" then
-        DFMAS = 200
-    elseif DFNAME == "Quake-Quake" then
-        DFMAS = 150
-    elseif DFNAME == "Dark-Dark" then
-        DFMAS = 110
-    end
-    if MAS >= DFMAS then
-        DFFN = true
-        TextDF.Position = UDim2.new(0, 85, 0, 60)
-        TextDF.TextColor3 = Color3.fromHex("#64ff64")
-        TextDF.Text = "มาสผลครบ"
+    if not DFNAME == nil then
+        MAS = game:GetService("Players").LocalPlayer.Backpack[DFNAME].Level.Value
+            if DFNAME == "Soul-Soul" then
+                DFMAS = 350
+            elseif DFNAME == "Dragon-Dragon" then
+                DFMAS = 350
+            elseif DFNAME == "Venom-Venom" then
+                DFMAS = 300
+            elseif DFNAME == "Human-Human: Buddha" then
+                DFMAS = 200
+            elseif DFNAME == "Quake-Quake" then
+                DFMAS = 150
+            elseif DFNAME == "Dark-Dark" then
+                DFMAS = 110
+            end
+            if MAS >= DFMAS then
+                DFFN = true
+                TextDF.Position = UDim2.new(0, 85, 0, 60)
+                TextDF.TextColor3 = Color3.fromHex("#64ff64")
+                TextDF.Text = "มาสผลครบ"
+            else
+                DFFN = false
+                TextDF.Position = UDim2.new(0, 120, 0, 60)
+                TextDF.TextColor3 = Color3.fromHex("#ff3232")
+                TextDF.Text = "มาสผลยังไม่ครบ"
+            end
     else
         DFFN = false
-        TextDF.Position = UDim2.new(0, 120, 0, 60)
+        TextDF.Position = UDim2.new(0, 75, 0, 60)
         TextDF.TextColor3 = Color3.fromHex("#ff3232")
-        TextDF.Text = "มาสผลยังไม่ครบ"
+        TextDF.Text = "ไม่มีผลอ่อ"
     end
+
 end
 
 function moneycheck()
@@ -124,7 +131,7 @@ function moneycheck()
 end
 
 function FNcheck()
-    if DFFN and MNFN and YMFN and BDFN then
+    if DFFN and MNFN and YMFN then
         TextFN.Position = UDim2.new(0, 105, 0, 200)
         TextFN.TextColor3 = Color3.fromHex("#64ff64")
         TextFN.Text = "เสร็จแล้วปิดได้"
