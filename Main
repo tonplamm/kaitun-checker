@@ -132,7 +132,7 @@ function moneycheck()
 end
 
 function FNcheck()
-    if DFFN and MNFN and YMFN then
+    if DFFN and MNFN and YMFN and BDFN then
         TextFN.Position = UDim2.new(0, 105, 0, 200)
         TextFN.TextColor3 = Color3.fromHex("#64ff64")
         TextFN.Text = "เสร็จแล้วปิดได้"
