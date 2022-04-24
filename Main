@@ -9,7 +9,7 @@ local parent = game.CoreGui
 local part = Instance.new(className, parent)
 part.Name = "hehe"
 
-wait(.5)
+wait(.2)
 
 --create TextLabel
 local className = "TextLabel"
@@ -19,7 +19,7 @@ local Text = Instance.new(className, parent)
 --setting TextLabel
 Text.Name = "textname"
 Text.Text = game:GetService("Players").LocalPlayer.Name
-Text.Position = UDim2.new(0, 150, 0, 270)
+Text.Position = UDim2.new(0, 175, 0, 270)
 Text.TextSize = 25
 Text.TextColor3 = Color3.new(255,255,255)
 Text.TextStrokeTransparency = 0
@@ -157,30 +157,40 @@ function FNcheck()
 end
 
 function Refresh()
-    TextDF.Text = "Refresh.."
+    TextDF.Text = ""
     TextDF.Position = UDim2.new(0, 100, 0, 130)
     TextDF.TextColor3 = Color3.fromHex("#ffffff")
-    TextMN.Text = "Refresh.."
+    TextMN.Text = ""
     TextMN.Position = UDim2.new(0, 100, 0, 95)
     TextMN.TextColor3 = Color3.fromHex("#ffffff")
-    TextFN.Text = "Refresh.."
+    TextFN.Text = ""
     TextFN.Position = UDim2.new(0, 100, 0, 60)
     TextFN.TextColor3 = Color3.fromHex("#ffffff")
-    TextYM.Text = "Refresh.."
+    TextYM.Text = ""
     TextYM.Position = UDim2.new(0, 100, 0, 130)
     TextYM.TextColor3 = Color3.fromHex("#ffffff")
-    TextBD.Text = "Refresh.."
+    TextBD.Text = ""
     TextBD.Position = UDim2.new(0, 100, 0, 130)
     TextBD.TextColor3 = Color3.fromHex("#ffffff")
+    TextHS.Text = ""
 end
 
-function checkyama()
+function checkitem()
     game:GetService("Players").LocalPlayer.PlayerGui.Main.Inventory.Visible = true
-    wait(1)
-    nowYM = game:GetService("Players").LocalPlayer.PlayerGui.Main.Inventory.Container.Current.ScrollingFrame.Frame
-    invenYM = game:GetService("Players").LocalPlayer.PlayerGui.Main.Inventory.Container.Stored.ScrollingFrame.Frame
-    nowYAMA = nowYM:FindFirstChild("Yama")
-    invenYAMA = invenYM:FindFirstChild("Yama")
+    wait(.2)
+    
+    now = game:GetService("Players").LocalPlayer.PlayerGui.Main.Inventory.Container.Current.ScrollingFrame.Frame
+    inven = game:GetService("Players").LocalPlayer.PlayerGui.Main.Inventory.Container.Stored.ScrollingFrame.Frame
+    
+    nowYAMA = now:FindFirstChild("Yama")
+    invenYAMA = inven:FindFirstChild("Yama")
+    
+    nowBUD = now:FindFirstChild("Buddy Sword")
+    invenBUD = inven:FindFirstChild("Buddy Sword")
+    
+    nowHSS = now:FindFirstChild("Hallow Scythe")
+    invenHSS = inven:FindFirstChild("Hallow Scythe")
+    
     if nowYAMA then
         print("Have Yama in hand")
         YMFN = true
@@ -200,16 +210,7 @@ function checkyama()
         TextYM.TextColor3 = Color3.fromHex("#ff3232")
         TextYM.Text = "ไม่มียามะ"
     end
-    game:GetService("Players").LocalPlayer.PlayerGui.Main.Inventory.Visible = false
-end
-
-function checkbuddy()
-    game:GetService("Players").LocalPlayer.PlayerGui.Main.Inventory.Visible = true
-    wait(1)
-    nowBD = game:GetService("Players").LocalPlayer.PlayerGui.Main.Inventory.Container.Current.ScrollingFrame.Frame
-    invenBD = game:GetService("Players").LocalPlayer.PlayerGui.Main.Inventory.Container.Stored.ScrollingFrame.Frame
-    nowBUD = nowBD:FindFirstChild("Buddy Sword")
-    invenBUD = invenBD:FindFirstChild("Buddy Sword")
+    
     if nowBUD then
         print("Have Buddy in hand")
         BDFN = true
@@ -229,16 +230,7 @@ function checkbuddy()
         TextBD.TextColor3 = Color3.fromHex("#ff3232")
         TextBD.Text = "ไม่บัดดี้"
     end
-    game:GetService("Players").LocalPlayer.PlayerGui.Main.Inventory.Visible = false
-end
-
-function checkhallow()
-    game:GetService("Players").LocalPlayer.PlayerGui.Main.Inventory.Visible = true
-    wait(1)
-    nowHS = game:GetService("Players").LocalPlayer.PlayerGui.Main.Inventory.Container.Current.ScrollingFrame.Frame
-    invenHS = game:GetService("Players").LocalPlayer.PlayerGui.Main.Inventory.Container.Stored.ScrollingFrame.Frame
-    nowHSS = nowHS:FindFirstChild("Hallow Scythe")
-    invenHSS = invenHS:FindFirstChild("Hallow Scythe")
+    
     if nowHSS then
         print("Have Hallow in hand")
         HSFN = true
@@ -257,18 +249,17 @@ function checkhallow()
         TextHS.Position = UDim2.new(0, 75, 0, 200)
         TextHS.TextColor3 = Color3.fromHex("#ff3232")
         TextHS.Text = "ไม่มีเคียว"
-    end
+    end    
+    
     game:GetService("Players").LocalPlayer.PlayerGui.Main.Inventory.Visible = false
 end
 
 spawn(function()
-   while wait() do
+    while wait() do
         pcall(function()
             dfcheck()
             moneycheck()
-            checkyama()
-            checkbuddy()
-            checkhallow()
+            checkitem()
             FNcheck()
             wait(10)
             Refresh()
