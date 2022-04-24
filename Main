@@ -19,7 +19,7 @@ local Text = Instance.new(className, parent)
 --setting TextLabel
 Text.Name = "textname"
 Text.Text = game:GetService("Players").LocalPlayer.Name
-Text.Position = UDim2.new(0, 175, 0, 20)
+Text.Position = UDim2.new(0, 160, 0, 20)
 Text.TextSize = 25
 Text.TextColor3 = Color3.new(255,255,255)
 Text.TextStrokeTransparency = 0
