@@ -106,6 +106,8 @@ function dfcheck()
         DFMAS = 150
     elseif DFNAME == "Dark-Dark" then
         DFMAS = 110
+    elseif DFNAME == "Magma-Magma" then
+        DFMAS = 140
     elseif DFNAME == "Ice-Ice" then
         DFMAS = 110
     end
