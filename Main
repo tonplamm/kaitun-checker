@@ -24,123 +24,27 @@ Text.TextSize = 25
 Text.TextColor3 = Color3.new(255,255,255)
 Text.TextStrokeTransparency = 0
 
-function notiline(tonplamekuay)
-    url = "https://notify-api.line.me/api/notify"
-    
-    
-    local headers = {
-       ["Content-Type"] = "application/x-www-form-urlencoded",
-       ["Authorization"] = "Bearer " .. linetoken
-    }
-    
-    local abcdef = { 
-        Url = url,
-        Method = "POST",
-        Headers = headers,
-        Body = "message=" .. tonplamekuay
-    }
-    
-    local response = syn.request(abcdef)
-end
+--create TextLabel
+local className = "TextLabel"
+local parent = game.CoreGui.hehe
+local TextDF = Instance.new(className, parent)
 
-function dfcheck()
-    --create TextLabel
-    local className = "TextLabel"
-    local parent = game.CoreGui.hehe
-    local TextDF = Instance.new(className, parent)
+--setting TextLabel
+TextDF.Name = "TextDF"
+TextDF.TextSize = 30
+TextDF.TextStrokeTransparency = 0
 
-    --setting TextLabel
-    TextDF.Name = "TextDF"
-    TextDF.TextSize = 30
-    TextDF.TextStrokeTransparency = 0
+--create TextLabel
+local className = "TextLabel"
+local parent = game.CoreGui.hehe
+local TextMN = Instance.new(className, parent)
 
-    DFNAME = game:GetService("Players").LocalPlayer.Data.DevilFruit.Value
-    --MAS = game:GetService("Players").LocalPlayer.Backpack[DFNAME].Level.Value
-    print(DFNAME)
-    if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(DFNAME) then
-    if DFNAME == "Soul-Soul" then
-        DFMAS = 350
-    elseif DFNAME == "Dragon-Dragon" then
-        DFMAS = 350
-    elseif DFNAME == "Venom-Venom" then
-        DFMAS = 300
-    elseif DFNAME == "Human-Human: Buddha" then
-        DFMAS = 200
-    elseif DFNAME == "Quake-Quake" then
-        DFMAS = 150
-    elseif DFNAME == "Dark-Dark" then
-        DFMAS = 110
-    elseif DFNAME == "Magma-Magma" then
-        DFMAS = 140
-    elseif DFNAME == "Ice-Ice" then
-        DFMAS = 110
-    end
-    MAS = game:GetService("Players").LocalPlayer.Backpack[DFNAME].Level.Value
-    if MAS >= DFMAS then
-        DFFN = true
-        TextDF.Position = UDim2.new(0, 85, 0, 60)
-        TextDF.TextColor3 = Color3.fromHex("#64ff64")
-        TextDF.Text = "มาสผลครบ"
-    else
-        DFFN = false
-        TextDF.Position = UDim2.new(0, 120, 0, 60)
-        TextDF.TextColor3 = Color3.fromHex("#ff3232")
-        TextDF.Text = "มาสผลยังไม่ครบ"
-    end
-    else
-        DFFN = false
-        TextDF.Position = UDim2.new(0, 110, 0, 60)
-        TextDF.TextColor3 = Color3.fromHex("#ff3232")
-        TextDF.Text = "ไม่มีผลน้าบอุนจิ"
-    end
-end
+--setting TextLabel
+TextMN.Name = "TextMN"
+TextMN.TextSize = 30
+TextMN.TextColor3 = Color3.new(255,255,255)
+TextMN.TextStrokeTransparency = 0
 
-function moneycheck()
-    --create TextLabel
-    local className = "TextLabel"
-    local parent = game.CoreGui.hehe
-    local TextMN = Instance.new(className, parent)
-
-    --setting TextLabel
-    TextMN.Name = "TextMN"
-    TextMN.TextSize = 30
-    TextMN.TextColor3 = Color3.new(255,255,255)
-    TextMN.TextStrokeTransparency = 0
-
-    MONEY = game:GetService("Players").LocalPlayer.Data.Beli.Value
-    if MONEY >= 15000000 then
-        MNFN = true
-        TextMN.Position = UDim2.new(0, 90, 0, 95)
-        TextMN.TextColor3 = Color3.fromHex("#64ff64")
-        TextMN.Text = "เงินครบแล้ว"
-    elseif MONEY <= 15000000 then
-        MNFN = false
-        TextMN.Position = UDim2.new(0, 97, 0, 95)
-        TextMN.TextColor3 = Color3.fromHex("#ff3232")
-        TextMN.Text = "เงินยังไม่ครบ"
-    end
-end
-
-function Refresh()
-    TextDF.Text = ""
-    TextDF.Position = UDim2.new(0, 100, 0, 130)
-    TextDF.TextColor3 = Color3.fromHex("#ffffff")
-    TextMN.Text = ""
-    TextMN.Position = UDim2.new(0, 100, 0, 95)
-    TextMN.TextColor3 = Color3.fromHex("#ffffff")
-    TextFN.Text = ""
-    TextFN.Position = UDim2.new(0, 100, 0, 60)
-    TextFN.TextColor3 = Color3.fromHex("#ffffff")
-    TextYM.Text = ""
-    TextYM.Position = UDim2.new(0, 100, 0, 130)
-    TextYM.TextColor3 = Color3.fromHex("#ffffff")
-    TextBD.Text = ""
-    TextBD.Position = UDim2.new(0, 100, 0, 130)
-    TextBD.TextColor3 = Color3.fromHex("#ffffff")
-    TextHS.Text = ""
-end
-
-function checkitem()
     --create TextLabel
     local className = "TextLabel"
     local parent = game.CoreGui.hehe
@@ -185,6 +89,94 @@ function checkitem()
     TextDD.TextColor3 = Color3.new(255,255,255)
     TextDD.TextStrokeTransparency = 0
 
+    --create TextLabel
+    local className = "TextLabel"
+    local parent = game.CoreGui.hehe
+    local TextFN = Instance.new(className, parent)
+
+    --setting TextLabel
+    TextFN.Name = "TextFN"
+    TextFN.TextSize = 30
+    TextFN.TextColor3 = Color3.new(255,255,255)
+    TextFN.TextStrokeTransparency = 0
+
+function notiline(tonplamekuay)
+    url = "https://notify-api.line.me/api/notify"
+    
+    
+    local headers = {
+       ["Content-Type"] = "application/x-www-form-urlencoded",
+       ["Authorization"] = "Bearer " .. linetoken
+    }
+    
+    local abcdef = { 
+        Url = url,
+        Method = "POST",
+        Headers = headers,
+        Body = "message=" .. tonplamekuay
+    }
+    
+    local response = syn.request(abcdef)
+end
+
+function dfcheck()
+    DFNAME = game:GetService("Players").LocalPlayer.Data.DevilFruit.Value
+    --MAS = game:GetService("Players").LocalPlayer.Backpack[DFNAME].Level.Value
+    print(DFNAME)
+    if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(DFNAME) then
+    if DFNAME == "Soul-Soul" then
+        DFMAS = 350
+    elseif DFNAME == "Dragon-Dragon" then
+        DFMAS = 350
+    elseif DFNAME == "Venom-Venom" then
+        DFMAS = 300
+    elseif DFNAME == "Human-Human: Buddha" then
+        DFMAS = 200
+    elseif DFNAME == "Quake-Quake" then
+        DFMAS = 150
+    elseif DFNAME == "Dark-Dark" then
+        DFMAS = 110
+    elseif DFNAME == "Magma-Magma" then
+        DFMAS = 140
+    elseif DFNAME == "Ice-Ice" then
+        DFMAS = 110
+    end
+    MAS = game:GetService("Players").LocalPlayer.Backpack[DFNAME].Level.Value
+    if MAS >= DFMAS then
+        DFFN = true
+        TextDF.Position = UDim2.new(0, 85, 0, 60)
+        TextDF.TextColor3 = Color3.fromHex("#64ff64")
+        TextDF.Text = "มาสผลครบ"
+    else
+        DFFN = false
+        TextDF.Position = UDim2.new(0, 120, 0, 60)
+        TextDF.TextColor3 = Color3.fromHex("#ff3232")
+        TextDF.Text = "มาสผลยังไม่ครบ"
+    end
+    else
+        DFFN = false
+        TextDF.Position = UDim2.new(0, 110, 0, 60)
+        TextDF.TextColor3 = Color3.fromHex("#ff3232")
+        TextDF.Text = "ไม่มีผลน้าบอุนจิ"
+    end
+end
+
+function moneycheck()
+    MONEY = game:GetService("Players").LocalPlayer.Data.Beli.Value
+    if MONEY >= 15000000 then
+        MNFN = true
+        TextMN.Position = UDim2.new(0, 90, 0, 95)
+        TextMN.TextColor3 = Color3.fromHex("#64ff64")
+        TextMN.Text = "เงินครบแล้ว"
+    elseif MONEY <= 15000000 then
+        MNFN = false
+        TextMN.Position = UDim2.new(0, 97, 0, 95)
+        TextMN.TextColor3 = Color3.fromHex("#ff3232")
+        TextMN.Text = "เงินยังไม่ครบ"
+    end
+end
+
+function checkitem()
     game:GetService("Players").LocalPlayer.PlayerGui.Main.Inventory.Visible = true
     wait(.2)
     
@@ -261,17 +253,6 @@ function checkitem()
 end
 
 function FNcheck()
-    --create TextLabel
-    local className = "TextLabel"
-    local parent = game.CoreGui.hehe
-    local TextFN = Instance.new(className, parent)
-
-    --setting TextLabel
-    TextFN.Name = "TextFN"
-    TextFN.TextSize = 30
-    TextFN.TextColor3 = Color3.new(255,255,255)
-    TextFN.TextStrokeTransparency = 0
-
     kaitunkeal = false
     kaitunkom = false
     kaikung = false
@@ -327,6 +308,25 @@ function FNcheck()
     end
 end
 
+function Refresh()
+    TextDF.Text = ""
+    TextDF.Position = UDim2.new(0, 100, 0, 130)
+    TextDF.TextColor3 = Color3.fromHex("#ffffff")
+    TextMN.Text = ""
+    TextMN.Position = UDim2.new(0, 100, 0, 95)
+    TextMN.TextColor3 = Color3.fromHex("#ffffff")
+    TextFN.Text = ""
+    TextFN.Position = UDim2.new(0, 100, 0, 60)
+    TextFN.TextColor3 = Color3.fromHex("#ffffff")
+    TextYM.Text = ""
+    TextYM.Position = UDim2.new(0, 100, 0, 130)
+    TextYM.TextColor3 = Color3.fromHex("#ffffff")
+    TextBD.Text = ""
+    TextBD.Position = UDim2.new(0, 100, 0, 130)
+    TextBD.TextColor3 = Color3.fromHex("#ffffff")
+    TextHS.Text = ""
+end
+
 spawn(function()
     while wait() do
         pcall(function()
@@ -337,10 +337,6 @@ spawn(function()
             wait(10)
             Refresh()
             wait(1)
-            --find old ui
-            if game.CoreGui:FindFirstChild("hehe") then 
-                game.CoreGui:FindFirstChild("hehe"):Destroy() 
-            end
         end)
     end
 end)
