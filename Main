@@ -247,6 +247,8 @@ function checkitem()
         TextDD.Position = UDim2.new(0, 150, 0, 325)
         TextDD.TextColor3 = Color3.fromHex("#64ff64")
         TextDD.Text = "มีของดีไอสัส"
+    else
+        TextDD.Text = ""
     end
 
     game:GetService("Players").LocalPlayer.PlayerGui.Main.Inventory.Visible = false
