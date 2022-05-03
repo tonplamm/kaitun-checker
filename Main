@@ -337,6 +337,10 @@ spawn(function()
             wait(10)
             Refresh()
             wait(1)
+            --find old ui
+            if game.CoreGui:FindFirstChild("hehe") then 
+                game.CoreGui:FindFirstChild("hehe"):Destroy() 
+            end
         end)
     end
 end)
