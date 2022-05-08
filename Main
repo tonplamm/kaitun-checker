@@ -45,60 +45,71 @@ TextMN.TextSize = 30
 TextMN.TextColor3 = Color3.new(255,255,255)
 TextMN.TextStrokeTransparency = 0
 
-    --create TextLabel
-    local className = "TextLabel"
-    local parent = game.CoreGui.hehe
-    local TextYM = Instance.new(className, parent)
+--create TextLabel
+local className = "TextLabel"
+local parent = game.CoreGui.hehe
+local TextYM = Instance.new(className, parent)
 
-    --setting TextLabel
-    TextYM.Name = "TextYM"
-    TextYM.TextSize = 30
-    TextYM.TextColor3 = Color3.new(255,255,255)
-    TextYM.TextStrokeTransparency = 0
+--setting TextLabel
+TextYM.Name = "TextYM"
+TextYM.TextSize = 30
+TextYM.TextColor3 = Color3.new(255,255,255)
+TextYM.TextStrokeTransparency = 0
 
-    --create TextLabel
-    local className = "TextLabel"
-    local parent = game.CoreGui.hehe
-    local TextBD = Instance.new(className, parent)
+--create TextLabel
+local className = "TextLabel"
+local parent = game.CoreGui.hehe
+local TextBD = Instance.new(className, parent)
 
-    --setting TextLabel
-    TextBD.Name = "TextBD"
-    TextBD.TextSize = 30
-    TextBD.TextColor3 = Color3.new(255,255,255)
-    TextBD.TextStrokeTransparency = 0
+--setting TextLabel
+TextBD.Name = "TextBD"
+TextBD.TextSize = 30
+TextBD.TextColor3 = Color3.new(255,255,255)
+TextBD.TextStrokeTransparency = 0
 
-    --create TextLabel
-    local className = "TextLabel"
-    local parent = game.CoreGui.hehe
-    local TextHS = Instance.new(className, parent)
+--create TextLabel
+local className = "TextLabel"
+local parent = game.CoreGui.hehe
+local TextHS = Instance.new(className, parent)
 
-    --setting TextLabel
-    TextHS.Name = "TextHS"
-    TextHS.TextSize = 30
-    TextHS.TextColor3 = Color3.new(255,255,255)
-    TextHS.TextStrokeTransparency = 0
+--setting TextLabel
+TextHS.Name = "TextHS"
+TextHS.TextSize = 30
+TextHS.TextColor3 = Color3.new(255,255,255)
+TextHS.TextStrokeTransparency = 0
 
-    --create TextLabel
-    local className = "TextLabel"
-    local parent = game.CoreGui.hehe
-    local TextDD = Instance.new(className, parent)
+--create TextLabel
+local className = "TextLabel"
+local parent = game.CoreGui.hehe
+local TextDD = Instance.new(className, parent)
 
-    --setting TextLabel
-    TextDD.Name = "TextDD"
-    TextDD.TextSize = 50
-    TextDD.TextColor3 = Color3.new(255,255,255)
-    TextDD.TextStrokeTransparency = 0
+--setting TextLabel
+TextDD.Name = "TextDD"
+TextDD.TextSize = 40
+TextDD.TextColor3 = Color3.new(255,255,255)
+TextDD.TextStrokeTransparency = 0
 
-    --create TextLabel
-    local className = "TextLabel"
-    local parent = game.CoreGui.hehe
-    local TextFN = Instance.new(className, parent)
+--create TextLabel
+local className = "TextLabel"
+local parent = game.CoreGui.hehe
+local TextCD = Instance.new(className, parent)
 
-    --setting TextLabel
-    TextFN.Name = "TextFN"
-    TextFN.TextSize = 30
-    TextFN.TextColor3 = Color3.new(255,255,255)
-    TextFN.TextStrokeTransparency = 0
+--setting TextLabel
+TextCD.Name = "TextCD"
+TextCD.TextSize = 40
+TextCD.TextColor3 = Color3.new(255,255,255)
+TextCD.TextStrokeTransparency = 0
+
+--create TextLabel
+local className = "TextLabel"
+local parent = game.CoreGui.hehe
+local TextFN = Instance.new(className, parent)
+
+--setting TextLabel
+TextFN.Name = "TextFN"
+TextFN.TextSize = 30
+TextFN.TextColor3 = Color3.new(255,255,255)
+TextFN.TextStrokeTransparency = 0
 
 function notiline(tonplamekuay)
     url = "https://notify-api.line.me/api/notify"
@@ -243,10 +254,18 @@ function checkitem()
         TextHS.Text = "ไม่มีเคียว"
     end    
 
-    if now:FindFirstChild("Dark Dagger") and inven:FindFirstChild("Dark Dagger") then
-        TextDD.Position = UDim2.new(0, 150, 0, 325)
+    if now:FindFirstChild("Dark Coat") or inven:FindFirstChild("Dark Coat") then
+        TextCD.Position = UDim2.new(0, 125, 0, 300)
+        TextCD.TextColor3 = Color3.fromHex("#64ff64")
+        TextCD.Text = "มีผ้าคลุมวิเศษ"
+    else
+        TextDD.Text = ""
+    end
+    
+    if now:FindFirstChild("Dark Dagger") or inven:FindFirstChild("Dark Dagger") then
+        TextDD.Position = UDim2.new(0, 140, 0, 350)
         TextDD.TextColor3 = Color3.fromHex("#64ff64")
-        TextDD.Text = "มีของดีไอสัส"
+        TextDD.Text = "มีโยรุจิ๋วโครตคม"
     else
         TextDD.Text = ""
     end
