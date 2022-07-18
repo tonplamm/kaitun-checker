@@ -269,7 +269,7 @@ function checkitem()
     else
         TextDD.Text = ""
     end
-
+    
     game:GetService("Players").LocalPlayer.PlayerGui.Main.Inventory.Visible = false
 end
 
@@ -277,6 +277,9 @@ function FNcheck()
     kaitunkeal = false
     kaitunkom = false
     kaikung = false
+    
+    find_Kabucha = game:GetService("Players").LocalPlayer.PlayerGui.Main.Inventory.Container.Current.ScrollingFrame.Frame:FindFirstChild("Kabucha") or game:GetService("Players").LocalPlayer.PlayerGui.Main.Inventory.Container.Stored.ScrollingFrame.Frame:FindFirstChild("Kabucha")
+    find_Shisui = game:GetService("Players").LocalPlayer.PlayerGui.Main.Inventory.Container.Current.ScrollingFrame.Frame:FindFirstChild("Shisui") or game:GetService("Players").LocalPlayer.PlayerGui.Main.Inventory.Container.Stored.ScrollingFrame.Frame:FindFirstChild("Shisui")
     
     if DFFN and MNFN and YMFN and HSFN and BDFN then
         kaitunkeal = true
@@ -288,6 +291,10 @@ function FNcheck()
         TextFN.Position = UDim2.new(0, 70, 0, 235)
         TextFN.TextColor3 = Color3.fromHex("#64ff64")
         TextFN.Text = "ไก่ตันคม"
+    elseif DFFN and MNFN and game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Dark-Dark") and find_kabucha and find_Shisui then
+        TextFN.Position = UDim2.new(0, 50, 0, 235)
+        TextFN.TextColor3 = Color3.fromHex("#64ff64")
+        TextFN.Text = "PVP"
     elseif DFFN and MNFN then
         kaikung = true
         TextFN.Position = UDim2.new(0, 50, 0, 235)
