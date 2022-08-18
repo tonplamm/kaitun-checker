@@ -1,4 +1,4 @@
-_G.Block_ID_list = {"auk_auk","apachawalkingid","SamalauID","kouaiqw","hehehuXXA"}
+_G.Block_ID_list = {"auk_auk","apachawalkingid","SamalauID","kouaiqw","hehehuXXA","Samuraxx"}
 _G.Status1 = true
 _G.Key = "MonkeService-Key2-tonplam-19665"
 _G.DiscordID = "429123690056253441"
