@@ -1,31 +1,3 @@
-local RAMAccount = loadstring(game:HttpGet'https://raw.githubusercontent.com/ic3w0lf22/Roblox-Account-Manager/master/RAMAccount.lua')()
-
-local MyAccount = RAMAccount.new(game:GetService'Players'.LocalPlayer.Name)
-
-LeveltoShow = game:GetService("Players").LocalPlayer.Data.Level.Value
-
-Money = game:GetService("Players").LocalPlayer.Data.Beli.Value
-
-Money = 100000
-
-longtei = ''
-
-if Money >= 1000 and Money <= 999999 then
-    longtei = 'K'
-    Money = Money / 1000
-elseif Money >= 1000000 then
-    longtei = 'M'
-    Money = Money / 1000000
-end
-
-Money = math.floor(Money)
-
-print(Money ..' M')
-
---MyAccount:SetAlias('Level : ' ..LeveltoShow)
-
-MyAccount:SetDescription('L : ' ..LeveltoShow ..' M : ' ..Money ..longtei)
-
 --find old ui
 if game.CoreGui:FindFirstChild("hehe") then 
     game.CoreGui:FindFirstChild("hehe"):Destroy() 
@@ -383,9 +355,40 @@ function Refresh()
     TextHS.Text = ""
 end
 
+function rbxacc()
+local RAMAccount = loadstring(game:HttpGet'https://raw.githubusercontent.com/ic3w0lf22/Roblox-Account-Manager/master/RAMAccount.lua')()
+
+local MyAccount = RAMAccount.new(game:GetService'Players'.LocalPlayer.Name)
+
+LeveltoShow = game:GetService("Players").LocalPlayer.Data.Level.Value
+
+Money = game:GetService("Players").LocalPlayer.Data.Beli.Value
+
+Money = 100000
+
+longtei = ''
+
+if Money >= 1000 and Money <= 999999 then
+    longtei = 'K'
+    Money = Money / 1000
+elseif Money >= 1000000 then
+    longtei = 'M'
+    Money = Money / 1000000
+end
+
+Money = math.floor(Money)
+
+print(Money ..' M')
+
+--MyAccount:SetAlias('Level : ' ..LeveltoShow)
+
+MyAccount:SetDescription('L : ' ..LeveltoShow ..' M : ' ..Money ..longtei)
+end
+
 spawn(function()
     while wait() do
         pcall(function()
+rbxacc()
             dfcheck()
             moneycheck()
             checkitem()
