@@ -364,11 +364,11 @@ LeveltoShow = game:GetService("Players").LocalPlayer.Data.Level.Value
 
 Money = game:GetService("Players").LocalPlayer.Data.Beli.Value
 
-Money = 100000
-
 longtei = ''
 
-if Money >= 1000 and Money <= 999999 then
+if Money >= 1 and Money <= 999 then
+    longtei = 'Beli'
+elseif Money >= 1000 and Money <= 999999 then
     longtei = 'K'
     Money = Money / 1000
 elseif Money >= 1000000 then
@@ -382,7 +382,7 @@ print(Money ..' M')
 
 --MyAccount:SetAlias('Level : ' ..LeveltoShow)
 
-MyAccount:SetDescription('L : ' ..LeveltoShow ..' M : ' ..Money ..longtei)
+MyAccount:SetDescription('L : ' ..LeveltoShow ..' M : ' ..Money ..' ' ..longtei)
 end
 
 spawn(function()
