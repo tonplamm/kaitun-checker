@@ -382,7 +382,7 @@ print(Money ..' M')
 
 --MyAccount:SetAlias('Level : ' ..LeveltoShow)
 
-MyAccount:SetDescription('L : ' ..LeveltoShow ..' M : ' ..Money ..' ' ..longtei)
+MyAccount:SetDescription('Lv : ' ..LeveltoShow ..' M : ' ..Money ..' ' ..longtei)
 end
 
 spawn(function()
