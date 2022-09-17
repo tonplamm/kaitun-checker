@@ -22,6 +22,7 @@ Have_Tushita = false
 
 GREEN = Color3.fromHex("#64ff64")
 RED = Color3.fromHex("#ff6464")
+WHITE = Color3.fromHex("#ffffff")
 
 --create TextLabel
 local className = "TextLabel"
@@ -37,6 +38,94 @@ Textname.TextColor3 = Color3.new(255,255,255)
 Textname.TextStrokeTransparency = 0
 Textname.TextXAlignment = Enum.TextXAlignment.Left
 
+function Check_Item(FIND,Can_Found)
+    for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Main.InventoryContainer.Right.Content.ScrollingFrame.Frame:GetChildren()) do
+        if v:FindFirstChild('ItemName') then
+            if v.ItemName.Text == FIND then
+                Can_Found = 'Found'
+                return Can_Found
+            else
+                Can_Found = 'Not Found'
+            end
+        end
+    end
+end 
+
+function Create_Textlabol(NAME,another_name,typeclass,parent,pos_down)
+    local NAME = Instance.new(typeclass, parent)
+    NAME.Name = another_name
+    NAME.Text = ''
+    NAME.Position = UDim2.new(0, 10, 0, pos_down)
+    NAME.TextSize = 20
+    NAME.TextColor3 = Color3.new(255,255,255)
+    NAME.TextStrokeTransparency = 0
+    NAME.TextXAlignment = Enum.TextXAlignment.Left
+end
+
+--create TextLabel
+local className = "TextLabel"
+local parent = game.CoreGui.hehe
+local TextMasDF = Instance.new(className, parent)
+
+--setting TextLabel
+TextMasDF.Name = "TextMasDF"
+TextMasDF.Text = ''
+TextMasDF.Position = UDim2.new(0, 10, 0, 50)
+TextMasDF.TextSize = 20
+TextMasDF.TextColor3 = Color3.new(255,255,255)
+TextMasDF.TextStrokeTransparency = 0
+TextMasDF.TextXAlignment = Enum.TextXAlignment.Left
+
+--check buddy
+Create_Textlabol("Textbuddy","Textbuddy","TextLabel",game.CoreGui.hehe,80)
+
+--check yama
+Create_Textlabol("TextYama","TextYama","TextLabel",game.CoreGui.hehe,110)
+
+--cheeck Hallow Scythe
+Create_Textlabol("TextHallowScythe","TextHallowScythe","TextLabel",game.CoreGui.hehe,140)
+
+--cheeck Dark Coat
+Create_Textlabol("TextDarkCoat","TextDarkCoat","TextLabel",game.CoreGui.hehe,170)
+
+--cheeck Dark Dagger
+Create_Textlabol("TextDarkDagger","TextDarkDagger","TextLabel",game.CoreGui.hehe,200)
+
+--cheeck Tushita
+Create_Textlabol("TextTushita","TextTushita","TextLabel",game.CoreGui.hehe,230)
+
+-- acc manager --
+local RAMAccount = loadstring(game:HttpGet'https://raw.githubusercontent.com/ic3w0lf22/Roblox-Account-Manager/master/RAMAccount.lua')()
+
+local MyAccount = RAMAccount.new(game:GetService'Players'.LocalPlayer.Name)
+
+local LeveltoShow = game:GetService("Players").LocalPlayer.Data.Level.Value
+
+local Money = game:GetService("Players").LocalPlayer.Data.Beli.Value
+
+local longtei = ''
+
+if Money >= 1 and Money <= 999 then
+    longtei = 'Beli'
+elseif Money >= 1000 and Money <= 999999 then
+    longtei = 'K'
+    Money = Money / 1000
+elseif Money >= 1000000 then
+    longtei = 'M'
+    Money = Money / 1000000
+end
+
+--Money = math.round(Money)
+
+--fps
+--local script = Instance.new('LocalScript', Fps)
+game:GetService("RunService").RenderStepped:Connect(function(frame) -- This will fire every time a frame is rendered
+    MyAccount:SetDescription('Lv: ' ..LeveltoShow ..' Money: ' ..math.round(Money) ..longtei .." FPS: "..math.round(1/frame)) 
+end)
+
+--MyAccount:SetDescription('Lv : ' ..LeveltoShow ..' Money : ' ..Money ..' ' ..longtei)
+
+while true do
     --check mastery
     OWN_DF = game:GetService("Players").LocalPlayer.Data.DevilFruit.Value
     MAS_DF = game:GetService("Players").LocalPlayer.Backpack[OWN_DF].Level.Value
@@ -111,20 +200,6 @@ Textname.TextXAlignment = Enum.TextXAlignment.Left
         MAS_DF_CHECK = 300
     end
        
-    --create TextLabel
-    local className = "TextLabel"
-    local parent = game.CoreGui.hehe
-    local TextMasDF = Instance.new(className, parent)
-
-    --setting TextLabel
-    TextMasDF.Name = "TextMasDF"
-    TextMasDF.Text = ''
-    TextMasDF.Position = UDim2.new(0, 10, 0, 50)
-    TextMasDF.TextSize = 20
-    TextMasDF.TextColor3 = Color3.new(255,255,255)
-    TextMasDF.TextStrokeTransparency = 0
-    TextMasDF.TextXAlignment = Enum.TextXAlignment.Left
-
     if MAS_DF >= MAS_DF_CHECK then
         Mastery_FULL = true
         TextMasDF.Text = 'Full Mas'
@@ -134,68 +209,10 @@ Textname.TextXAlignment = Enum.TextXAlignment.Left
         TextMasDF.TextColor3 = RED
     end
 
-    -- acc manager --
-    local RAMAccount = loadstring(game:HttpGet'https://raw.githubusercontent.com/ic3w0lf22/Roblox-Account-Manager/master/RAMAccount.lua')()
-
-    local MyAccount = RAMAccount.new(game:GetService'Players'.LocalPlayer.Name)
-
-    local LeveltoShow = game:GetService("Players").LocalPlayer.Data.Level.Value
-
-    local Money = game:GetService("Players").LocalPlayer.Data.Beli.Value
-
-    local longtei = ''
-
-    if Money >= 1 and Money <= 999 then
-        longtei = 'Beli'
-    elseif Money >= 1000 and Money <= 999999 then
-        longtei = 'K'
-        Money = Money / 1000
-    elseif Money >= 1000000 then
-        longtei = 'M'
-        Money = Money / 1000000
-    end
-
-    --Money = math.round(Money)
-
-    --fps
-    --local script = Instance.new('LocalScript', Fps)
-    game:GetService("RunService").RenderStepped:Connect(function(frame) -- This will fire every time a frame is rendered
-        MyAccount:SetDescription('Lv: ' ..LeveltoShow ..' Money: ' ..math.round(Money) ..longtei .." FPS: "..math.round(1/frame)) 
-    end)
-
-    --MyAccount:SetDescription('Lv : ' ..LeveltoShow ..' Money : ' ..Money ..' ' ..longtei)
-
     -- check Money --
     if game:GetService("Players").LocalPlayer.Data.Beli.Value >= 15000000 then
         MONEY_FULL = true
     end
-
-    function Check_Item(FIND,Can_Found)
-        for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.Main.InventoryContainer.Right.Content.ScrollingFrame.Frame:GetChildren()) do
-            if v:FindFirstChild('ItemName') then
-                if v.ItemName.Text == FIND then
-                    Can_Found = 'Found'
-                    return Can_Found
-                else
-                    Can_Found = 'Not Found'
-                end
-            end
-        end
-    end 
-
-    function Create_Textlabol(NAME,another_name,typeclass,parent,pos_down)
-        local NAME = Instance.new(typeclass, parent)
-        NAME.Name = another_name
-        NAME.Text = ''
-        NAME.Position = UDim2.new(0, 10, 0, pos_down)
-        NAME.TextSize = 20
-        NAME.TextColor3 = Color3.new(255,255,255)
-        NAME.TextStrokeTransparency = 0
-        NAME.TextXAlignment = Enum.TextXAlignment.Left
-    end
-
-    --check buddy
-    Create_Textlabol("Textbuddy","Textbuddy","TextLabel",game.CoreGui.hehe,80)
 
     if Check_Item('Buddy Sword',Can_Found) == 'Found' then
         Have_Buddy = true
@@ -207,9 +224,6 @@ Textname.TextXAlignment = Enum.TextXAlignment.Left
         game:GetService("CoreGui").hehe.Textbuddy.TextColor3 = RED
     end
 
-    --check yama
-    Create_Textlabol("TextYama","TextYama","TextLabel",game.CoreGui.hehe,110)
-
     if Check_Item('Yama',Can_Found) == 'Found' then
         Have_Yama = true
         game:GetService("CoreGui").hehe.TextYama.Text = 'Have Yama'
@@ -219,9 +233,6 @@ Textname.TextXAlignment = Enum.TextXAlignment.Left
         game:GetService("CoreGui").hehe.TextYama.Text = 'Dont have Yama'
         game:GetService("CoreGui").hehe.TextYama.TextColor3 = RED
     end
-
-    --cheeck Hallow Scythe
-    Create_Textlabol("TextHallowScythe","TextHallowScythe","TextLabel",game.CoreGui.hehe,140)
 
     if Check_Item('Hallow Scythe',Can_Found) == 'Found' then
         Have_Hallow_Scythe = true
@@ -233,9 +244,6 @@ Textname.TextXAlignment = Enum.TextXAlignment.Left
         game:GetService("CoreGui").hehe.TextHallowScythe.TextColor3 = RED
     end
 
-    --cheeck Dark Coat
-    Create_Textlabol("TextDarkCoat","TextDarkCoat","TextLabel",game.CoreGui.hehe,170)
-
     if Check_Item('Dark Coat',Can_Found) == 'Found' then
         Have_Dark_Coat = true
         game:GetService("CoreGui").hehe.TextDarkCoat.Text = 'Have Dark Coat'
@@ -245,9 +253,6 @@ Textname.TextXAlignment = Enum.TextXAlignment.Left
         game:GetService("CoreGui").hehe.TextDarkCoat.Text = 'Dont have Dark Coat'
         game:GetService("CoreGui").hehe.TextDarkCoat.TextColor3 = RED
     end
-
-    --cheeck Dark Dagger
-    Create_Textlabol("TextDarkDagger","TextDarkDagger","TextLabel",game.CoreGui.hehe,200)
 
     if Check_Item('Dark Dagger',Can_Found) == 'Found' then
         Have_Dark_Dagger = true
@@ -259,9 +264,6 @@ Textname.TextXAlignment = Enum.TextXAlignment.Left
         game:GetService("CoreGui").hehe.TextDarkDagger.TextColor3 = RED
     end
 
-    --cheeck Tushita
-    Create_Textlabol("TextTushita","TextTushita","TextLabel",game.CoreGui.hehe,230)
-
     if Check_Item('Tushita',Can_Found) == 'Found' then
         Have_Tushita = true
         game:GetService("CoreGui").hehe.TextTushita.Text = 'Have Tushita'
@@ -271,3 +273,30 @@ Textname.TextXAlignment = Enum.TextXAlignment.Left
         game:GetService("CoreGui").hehe.TextTushita.Text = 'Dont have Tushita'
         game:GetService("CoreGui").hehe.TextTushita.TextColor3 = RED
     end
+
+    wait(10)
+
+    --refresh
+    game:GetService("CoreGui").hehe.TextMasDF.Text = 'Refresh..'
+    game:GetService("CoreGui").hehe.TextMasDF.TextColor3 = WHITE
+
+    game:GetService("CoreGui").hehe.Textbuddy.Text = 'Refresh..'
+    game:GetService("CoreGui").hehe.Textbuddy.TextColor3 = WHITE
+
+    game:GetService("CoreGui").hehe.TextYama.Text = 'Refresh..'
+    game:GetService("CoreGui").hehe.TextYama.TextColor3 = WHITE
+
+    game:GetService("CoreGui").hehe.TextHallowScythe.Text = 'Refresh..'
+    game:GetService("CoreGui").hehe.TextHallowScythe.TextColor3 = WHITE
+
+    game:GetService("CoreGui").hehe.TextDarkCoat.Text = 'Refresh..'
+    game:GetService("CoreGui").hehe.TextDarkCoat.TextColor3 = WHITE
+
+    game:GetService("CoreGui").hehe.TextDarkDagger.Text = 'Refresh..'
+    game:GetService("CoreGui").hehe.TextDarkDagger.TextColor3 = WHITE
+
+    game:GetService("CoreGui").hehe.TextTushita.Text = 'Refresh..'
+    game:GetService("CoreGui").hehe.TextTushita.TextColor3 = WHITE
+
+    wait(1)
+end
